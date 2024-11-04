@@ -2,7 +2,6 @@
   <div class="login-container">
     <div class="login-box">
       <div class="login-header">
-        <img src="/logo.png" alt="Logo" class="logo" />
         <h2>书签管理系统</h2>
       </div>
       
@@ -122,12 +121,6 @@ const handleLogin = async () => {
 .login-header {
   text-align: center;
   margin-bottom: 40px;
-}
-
-.logo {
-  width: 80px;
-  height: 80px;
-  margin-bottom: 16px;
 }
 
 .login-header h2 {
