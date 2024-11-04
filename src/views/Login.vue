@@ -93,8 +93,7 @@ const handleLogin = async () => {
     router.push(redirect)
     ElMessage.success('登录成功')
   } catch (error) {
-    console.error('Login failed:', error)
-    ElMessage.error('登录失败：用户名或密码错误')
+    ElMessage.error(error.message)
   } finally {
     loading.value = false
   }
