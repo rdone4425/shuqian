@@ -1,9 +1,8 @@
-export async function onRequest({ request, next, env }) {
+export async function onRequest({ request, env, next }) {
   // 处理 API 请求
   if (request.url.includes('/api/')) {
-    // 将 API 请求转发到 Worker
     const workerUrl = new URL(request.url)
-    workerUrl.hostname = env.WORKER_HOSTNAME
+    workerUrl.hostname = env.WORKER_HOSTNAME || `${env.WORKER_NAME}.workers.dev`
     return fetch(workerUrl.toString(), request)
   }
   

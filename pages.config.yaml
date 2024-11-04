@@ -13,8 +13,8 @@ settings:
 # Environment variables
 environment:
   production:
-    VITE_API_BASE_URL: https://api.your-domain.com
-    WORKER_HOSTNAME: your-worker-name.your-subdomain.workers.dev
+    VITE_API_BASE_URL: https://bookmarks-api.your-name.workers.dev
+    WORKER_HOSTNAME: bookmarks-api.your-name.workers.dev
   preview:
-    VITE_API_BASE_URL: https://preview-api.your-domain.com
-    WORKER_HOSTNAME: your-worker-name.your-subdomain.workers.dev
+    VITE_API_BASE_URL: https://bookmarks-api.your-name.workers.dev
+    WORKER_HOSTNAME: bookmarks-api.your-name.workers.dev

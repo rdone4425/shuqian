@@ -5,8 +5,7 @@
   "routes": [
     {
       "pattern": "/api/*",
-      "zone_name": "your-zone-name",
-      "service": "your-worker-name.your-subdomain.workers.dev"
+      "service": "bookmarks-api.your-name.workers.dev"
     },
     {
       "pattern": "/*",

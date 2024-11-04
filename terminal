@@ -1,12 +1,15 @@
+# 创建项目
 vue create bookmarks-admin
 cd bookmarks-admin
-npm install axios element-plus 
 
-# 登录 Cloudflare
+# 安装依赖
+npm install axios element-plus pinia vue-router @vitejs/plugin-vue
+
+# 登录 Cloudflare（如果还没有登录）
 wrangler login
 
-# 创建新的 Pages 项目
+# 创建 Pages 项目
 wrangler pages project create bookmarks-admin
 
-# 部署
+# 构建并部署
 npm run pages:deploy 
