@@ -11,21 +11,6 @@ export default defineConfig({
   },
   build: {
     outDir: 'dist',
-    sourcemap: true,
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          'element-plus': ['element-plus']
-        }
-      }
-    }
-  },
-  server: {
-    proxy: {
-      '/api': {
-        target: 'http://localhost:8787',
-        changeOrigin: true
-      }
-    }
+    sourcemap: true
   }
 }) 
