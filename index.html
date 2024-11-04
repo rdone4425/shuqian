@@ -4,10 +4,26 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="书签管理系统 - 高效管理您的网络书签" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
     <title>书签管理系统</title>
+    <script>
+      window.DEBUG = true; // 设置为 true 开启调试日志
+      if (window.DEBUG) {
+        window.onerror = function(msg, url, line, col, error) {
+          console.error('Error: ', {msg, url, line, col, error});
+          return false;
+        };
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    <noscript>您需要启用 JavaScript 才能运行此应用。</noscript>
   </body>
 </html> 

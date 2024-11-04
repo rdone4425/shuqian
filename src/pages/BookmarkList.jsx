@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Table, Card, Button, Input, Space, Modal, Form, message } from 'antd';
+import { Table, Card, Button, Input, Space, Modal, Form, message, Spin } from 'antd';
 import { PlusOutlined, SearchOutlined } from '@ant-design/icons';
 import useSWR from 'swr';
 import { bookmarkAPI } from '../services/api';
@@ -9,9 +9,32 @@ const BookmarkList = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [form] = Form.useForm();
   
-  const { data: bookmarks, mutate } = useSWR('/bookmarks', () => 
+  const { data: bookmarks, error, isLoading } = useSWR('/bookmarks', () => 
     bookmarkAPI.getBookmarks()
   );
+
+  // 处理加载状态
+  if (isLoading) {
+    return (
+      <div style={{ textAlign: 'center', padding: '50px' }}>
+        <Spin size="large" tip="加载中..." />
+      </div>
+    );
+  }
+
+  // 处理错误状态
+  if (error) {
+    return (
+      <div style={{ textAlign: 'center', padding: '50px', color: 'red' }}>
+        <h2>加载失败</h2>
+        <p>{error.message}</p>
+        <Button onClick={() => window.location.reload()}>重试</Button>
+      </div>
+    );
+  }
+
+  // 确保 bookmarks 是数组
+  const bookmarkList = Array.isArray(bookmarks) ? bookmarks : [];
 
   const columns = [
     {
@@ -105,8 +128,9 @@ const BookmarkList = () => {
     >
       <Table
         columns={columns}
-        dataSource={bookmarks}
+        dataSource={bookmarkList}
         rowKey={(record) => `${record.domain}${record.path}`}
+        locale={{ emptyText: '暂无数据' }}
       />
 
       <Modal
