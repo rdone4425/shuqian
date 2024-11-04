@@ -1,0 +1,12 @@
+vue create bookmarks-admin
+cd bookmarks-admin
+npm install axios element-plus 
+
+# 登录 Cloudflare
+wrangler login
+
+# 创建新的 Pages 项目
+wrangler pages project create bookmarks-admin
+
+# 部署
+npm run pages:deploy 

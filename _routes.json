@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "include": ["/*"],
+  "exclude": ["/api/*"],
+  "routes": [
+    {
+      "pattern": "/api/*",
+      "zone_name": "your-zone-name",
+      "service": "your-worker-name.your-subdomain.workers.dev"
+    },
+    {
+      "pattern": "/*",
+      "serve": "/index.html"
+    }
+  ]
+} 
