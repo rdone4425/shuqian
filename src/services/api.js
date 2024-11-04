@@ -70,4 +70,8 @@ export const bookmarkAPI = {
   // 搜索书签
   searchBookmarks: (params) => 
     fetchAPI(`/api/search?${new URLSearchParams(params)}`),
+    
+  // 获取域名标签
+  getDomainTags: () => 
+    fetchAPI('/api/domain/tags'),
 }; 
