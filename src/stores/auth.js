@@ -1,19 +1,26 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
-import api from '@/api/auth'
 
 export const useAuthStore = defineStore('auth', () => {
   const token = ref(localStorage.getItem('token'))
   const user = ref(JSON.parse(localStorage.getItem('user') || 'null'))
 
-  const isAuthenticated = () => !!token.value
-  
   const login = async (credentials) => {
-    const { data } = await api.login(credentials)
-    token.value = data.token
-    user.value = data.user
-    localStorage.setItem('token', data.token)
-    localStorage.setItem('user', JSON.stringify(data.user))
+    if (credentials.username === 'admin' && credentials.password === 'admin123') {
+      const fakeToken = 'fake-jwt-token'
+      const fakeUser = {
+        username: credentials.username,
+        role: 'admin'
+      }
+      
+      token.value = fakeToken
+      user.value = fakeUser
+      localStorage.setItem('token', fakeToken)
+      localStorage.setItem('user', JSON.stringify(fakeUser))
+      return true
+    }
+    
+    throw new Error('用户名或密码错误')
   }
   
   const logout = () => {
@@ -22,6 +29,8 @@ export const useAuthStore = defineStore('auth', () => {
     localStorage.removeItem('token')
     localStorage.removeItem('user')
   }
+
+  const isAuthenticated = () => !!token.value
 
   return {
     token,
